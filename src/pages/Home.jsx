@@ -14,9 +14,14 @@ export const Home = () => {
     <div>
       <h1>Trending movies</h1>
       <ul>
-        {movies.map(({ title, id }) => (
+        {movies.map(({ id, title }) => (
           <li key={id}>
             <Link to={`movies/${id}`} state={{ from: location }}>
+              {/* <img
+                src={`https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${poster_path}`}
+                alt={title}
+                width="250px"
+              /> */}
               {title}
             </Link>
           </li>

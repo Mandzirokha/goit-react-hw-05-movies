@@ -11,7 +11,7 @@ export const getTrending = async () => {
 
 export const getSearchMovies = async query => {
   const response = await axios.get(`search/movie?query=${query}`);
-  return response.data.results;
+  return response.data;
 };
 
 export const getMovieDetails = async movieId => {

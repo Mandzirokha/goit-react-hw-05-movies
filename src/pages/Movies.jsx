@@ -1,26 +1,29 @@
-// import { useState } from 'react';
+import { useState } from 'react';
 import { SearchBar } from 'components/SearchBar/SearchBar';
-// import { useSearchParams } from 'react-router-dom';
-// import { useEffect } from 'react';
-// import { getSearchMovies } from 'services/api';
+import { Outlet, Link } from 'react-router-dom';
+
+import { getSearchMovies } from 'services/api';
 
 export const Movies = () => {
-  // const [searchMovies, setSearchMovies] = useState([]);
-  // const [searchParams, setSearchParams] = useSearchParams();
-  // const query = searchParams.get('search') ?? '';
+  const [movies, setMovies] = useState([]);
 
-  // const handleSubmit = e => {
-  //   e.preventDefault();
-  // };
-
-  // useEffect(() => {
-  //   if (!query) return;
-  //   getSearchMovies(query).then(setSearchMovies);
-  // }, [query]);
+  const handleInput = async query => {
+    return await getSearchMovies(query).then(({ results }) =>
+      setMovies(results)
+    );
+  };
 
   return (
     <>
-      <SearchBar />
+      <SearchBar onSubmit={handleInput} />
+      <ul>
+        {movies.map(({ id, title }) => (
+          <li key={id}>
+            <Link to={`movies/${id}`}>{title}</Link>
+          </li>
+        ))}
+      </ul>
+      <Outlet />
     </>
   );
 };

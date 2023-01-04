@@ -5,7 +5,7 @@ export const SearchForm = styled.form`
   align-items: center;
   width: 100%;
   max-width: 600px;
-  background-color: #fff;
+  border: 1px solid orangered;
   border-radius: 3px;
   overflow: hidden;
 `;
@@ -15,16 +15,17 @@ export const FormButton = styled.button`
   width: 48px;
   height: 48px;
   border: 0;
+  background-color: orangered;
   background-image: url('https://img.icons8.com/ios-filled/50/000000/search--v1.png');
   background-size: 50%;
   background-repeat: no-repeat;
   background-position: center;
-  opacity: 0.6;
+  opacity: 0.9;
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
   outline: none;
   :hover {
-    opacity: 1;
+    opacity: 1.2;
   }
 `;
 

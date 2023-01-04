@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { SearchBar } from 'components/SearchBar/SearchBar';
-import { Outlet, Link } from 'react-router-dom';
-
+import { Outlet } from 'react-router-dom';
 import { getSearchMovies } from 'services/api';
+import { MovieList } from 'components/MovieList/MovieList';
+import { ToastContainer } from 'react-toastify';
 
 export const Movies = () => {
   const [movies, setMovies] = useState([]);
@@ -16,13 +17,8 @@ export const Movies = () => {
   return (
     <>
       <SearchBar onSubmit={handleInput} />
-      <ul>
-        {movies.map(({ id, title }) => (
-          <li key={id}>
-            <Link to={`movies/${id}`}>{title}</Link>
-          </li>
-        ))}
-      </ul>
+      <MovieList movies={movies} />
+      <ToastContainer autoClose={3000} />
       <Outlet />
     </>
   );

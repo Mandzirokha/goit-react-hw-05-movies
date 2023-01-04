@@ -1,9 +1,11 @@
 import { useSearchParams } from 'react-router-dom';
 import { SearchForm, FormButton, ButtonLabel, Input } from './SearchBar.styled';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const SearchBar = ({ onSubmit }) => {
   const [searchParam, setSearchParam] = useSearchParams();
-  const query = searchParam.get('query' ?? '');
+  const query = searchParam.get('query' ?? ' ');
 
   const handleInput = e => {
     setSearchParam({ query: e.target.value });
@@ -13,7 +15,7 @@ export const SearchBar = ({ onSubmit }) => {
     e.preventDefault();
 
     if (query.trim() === '') {
-      // toast.error('Please, enter a request.');
+      toast.error('Please, enter a request.');
       return;
     }
 
